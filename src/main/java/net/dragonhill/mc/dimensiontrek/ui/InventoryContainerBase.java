@@ -24,6 +24,8 @@ public abstract class InventoryContainerBase extends Container {
     protected static final int PLAYER_INVENTORY_SLOT_SIZE = 18;
 
     protected abstract int getClientHeight();
+    abstract protected int getUsedClientWidth();
+    abstract protected int getUsedClientHeight();
 
     protected abstract void setupCustomInventory(IInventory inventory);
 
@@ -62,16 +64,20 @@ public abstract class InventoryContainerBase extends Container {
         return new Inventory(numberOfSlots);
     }
 
+    protected void addSlotWithEffectiveOffset(IInventory inventory, int index, int x, int y) {
+        this.addSlot(new Slot(inventory, index, x + (176 - getUsedClientWidth()) / 2, y + InventoryScreen.TOP_PART_HEIGHT + (getClientHeight() - getUsedClientHeight()) / 2));
+    }
+
     private void setupStandardInventory(final PlayerInventory playerInventory) {
 
-        final int yStartHotBar = 62 + getClientHeight();
+        final int yStartHotBar = 59 + InventoryScreen.TOP_PART_HEIGHT + getClientHeight();
 
         //Add player hot bar
         for (int column = 0; column < PLAYER_INVENTORY_ROW_SLOTS; ++column) {
             this.addSlot(new Slot(playerInventory, column, PLAYER_INVENTORY_STD_X_START + column * PLAYER_INVENTORY_SLOT_SIZE, yStartHotBar));
         }
 
-        final int yStartInventory = 4 + getClientHeight();
+        final int yStartInventory = 1 + InventoryScreen.TOP_PART_HEIGHT + getClientHeight();
 
         //Add player inventory
         for (int row = 0; row < PLAYER_INVENTORY_ROWS; ++row) {

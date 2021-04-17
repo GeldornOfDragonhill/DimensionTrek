@@ -4,7 +4,6 @@ import net.dragonhill.mc.dimensiontrek.init.ModContainers;
 import net.dragonhill.mc.dimensiontrek.ui.InventoryContainerBase;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.container.Slot;
 import net.minecraft.network.PacketBuffer;
 
 public class BiomeAnalyzerContainer extends InventoryContainerBase {
@@ -19,11 +18,23 @@ public class BiomeAnalyzerContainer extends InventoryContainerBase {
 
     @Override
     protected int getClientHeight() {
-        return 120;
+        return BiomeAnalyzerScreen.CLIENT_HEIGHT;
+    }
+
+    @Override
+    protected int getUsedClientWidth() {
+        return BiomeAnalyzerScreen.USED_CLIENT_WIDTH;
+    }
+
+    @Override
+    protected int getUsedClientHeight() {
+        return BiomeAnalyzerScreen.USED_CLIENT_HEIGHT;
     }
 
     @Override
     protected void setupCustomInventory(IInventory inventory) {
-
+        this.addSlotWithEffectiveOffset(inventory, 0, 27, 1);
+        this.addSlotWithEffectiveOffset(inventory, 1, 1, 24);
+        this.addSlotWithEffectiveOffset(inventory, 2, 27, 49);
     }
 }

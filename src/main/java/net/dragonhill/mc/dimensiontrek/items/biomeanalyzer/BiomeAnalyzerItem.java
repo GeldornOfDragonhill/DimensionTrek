@@ -26,7 +26,7 @@ import javax.annotation.Nullable;
 
 public class BiomeAnalyzerItem extends ItemBase {
 
-    public static final int NUM_CUSTOM_SLOTS = 2;
+    public static final int NUM_CUSTOM_SLOTS = 3;
 
     public BiomeAnalyzerItem() {
         super(properties -> properties
@@ -67,7 +67,6 @@ public class BiomeAnalyzerItem extends ItemBase {
         if(!world.isClientSide) {
             IServerContainerFactory serverContainerFactory = (int windowId, PlayerInventory playerInventory, PlayerEntity playerEntity)  -> new BiomeAnalyzerContainer(windowId, playerInventory, getInventory(heldItem));
             BiomeAnalyzerContainer.openGui((ServerPlayerEntity) player, serverContainerFactory, ModItems.biomeAnalyzer.get().getDescriptionId());
-
         }
 
         return ActionResult.success(heldItem);
