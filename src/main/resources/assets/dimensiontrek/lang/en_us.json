@@ -1,4 +1,7 @@
 {
   "itemGroup.dimensiontrek": "Dimension Trek",
   "item.dimensiontrek.biome_analyzer": "Biome Analyzer",
+  "item.dimensiontrek.crystal_empty": "Empty Crystal",
+  "item.dimensiontrek.crystal_biome": "Biome Crystal",
+  "item.dimensiontrek.etching_fluid_biome": "Biome Etching Fluid"
 }

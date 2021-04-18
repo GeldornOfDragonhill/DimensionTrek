@@ -5,5 +5,5 @@ import net.minecraft.entity.player.PlayerInventory;
 
 @FunctionalInterface
 public interface IServerContainerFactory<TContainer extends InventoryContainerBase> {
-    TContainer create(int windowId, PlayerInventory playerInventory, PlayerEntity playerEntity);
+    TContainer create(int containerId, PlayerInventory playerInventory, PlayerEntity playerEntity);
 }

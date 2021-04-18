@@ -52,6 +52,13 @@ public abstract class InventoryScreen<T extends InventoryContainerBase> extends 
     }
 
     @Override
+    public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
+        renderBackground(matrixStack);
+        super.render(matrixStack, mouseX, mouseY, partialTicks);
+        renderTooltip(matrixStack, mouseX, mouseY);
+    }
+
+    @Override
     protected void renderBg(MatrixStack matrixStack, float partialTicks, int mouseX, int mouseY) {
         RenderSystem.color4f(1.0f, 1.0f, 1.0f, 1.0f);
 
